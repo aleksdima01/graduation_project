@@ -24,6 +24,8 @@ services:
     image: myapp/php # имя будущего образа
     container_name: application # имя контейнера после запуска
     #tty: true
+    ports:
+      - "5173:5173"
     volumes:
       - ../afisha_project:/data/afisha
     # мы можем создать для контейнеров внутреннюю сеть
