@@ -2,12 +2,10 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchAfisha = createAsyncThunk(
     'afisha/fetchAfisha',
-    async (_, thunkApi) => {
+    async (page = 1, thunkApi) => {
         try {
-            const response = await fetch("public-api/v1.4/events/?lang=&fields=&expand=&order_by=&text_format=&ids=&location=spb", {
+            const response = await fetch(`public-api/v1.4/events/?lang=&fields=id,dates,publication_date,title,short_title,place,location,images,site_url&expand=&order_by=-publication_date&text_format=&ids=&page=${page}&page_size=21&location=spb&actual_since=${Date.now() / 1000}`, {
                 method: "GET",
-
-
             });
             if (!response.ok) {
                 throw new Error("Something go wrong");
