@@ -1,24 +1,32 @@
-import { useEffect } from 'react';
+
 import './App.css';
-import { useDispatch } from "react-redux";
-import { fetchAfisha } from './store/afishaReducer';
+
 import ShowAfishaInfo from './components/ShowAfishaInfo';
 import Pagination from './components/Pagination';
-
+import Header from './components/Header';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 function App() {
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAfisha())
-  }, [dispatch])
+
   return (
     <>
       <div className="App">
-        <ShowAfishaInfo />
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route exact path="/" element={<ShowAfishaInfo city={'spb'} />} />
+            <Route path="/msk" element={<ShowAfishaInfo city={'msk'} />} />
+            <Route path="/krd" element={<ShowAfishaInfo city={'krd'} />} />
+            <Route path="/sochi" element={<ShowAfishaInfo city={'sochi'} />} />
+          </Routes>
+        </BrowserRouter>
+
       </div >
-      <footer>
-        <Pagination />
-      </footer>
+
     </>
   );
 }
