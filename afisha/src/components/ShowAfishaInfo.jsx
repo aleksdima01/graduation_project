@@ -30,7 +30,6 @@ const ShowAfishaInfo = ({ city }) => {
                     : null}
             </div >
             <footer className={loading ? "hidden" : ''}>
-
                 <Pagination city={city} />
 
             </footer>
