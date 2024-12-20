@@ -2,13 +2,13 @@
 import './App.css';
 
 import ShowAfishaInfo from './components/ShowAfishaInfo';
-import Pagination from './components/Pagination';
 import Header from './components/Header';
 import {
   BrowserRouter,
   Route,
   Routes,
 } from "react-router-dom";
+import FetchEachEvent from './components/FetchEachEvent';
 function App() {
 
 
@@ -22,6 +22,7 @@ function App() {
             <Route path="/msk" element={<ShowAfishaInfo city={'msk'} />} />
             <Route path="/krd" element={<ShowAfishaInfo city={'krd'} />} />
             <Route path="/sochi" element={<ShowAfishaInfo city={'sochi'} />} />
+            <Route path="/:id" element={<FetchEachEvent />} />
           </Routes>
         </BrowserRouter>
 
