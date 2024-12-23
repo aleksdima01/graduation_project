@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,7 +15,7 @@ use Inertia\Inertia;
 //     ]);
 // });
 Route::get('/', function () {
-    return Inertia::render('StartPage', [
+    return Inertia::render('ShowAfishaInfo', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);

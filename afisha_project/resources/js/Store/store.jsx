@@ -1,13 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productsReducer from './productsSlice'
-import cartReducer from './cartSlice'
+import showAfishaReducer from './afishaReducer'
+import showEventReducer from './eventReducer'
 
 const store = configureStore({
     reducer: {
-        products: productsReducer,
-        cart: cartReducer,
+        afisha: showAfishaReducer,
+        event: showEventReducer,
     },
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
 });
 
 export default store;
