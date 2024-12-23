@@ -23,9 +23,7 @@ export default function ShowAfishaInfo({ city }) {
 
     return (
         <>
-
-
-            <Head title="Welcome" />
+            {/* <Head title="Welcome" /> */}
             <div>
                 <h2 className="text-4xl mb-10">Afisha info</h2>
                 {loading && <p>Загрузка...</p>}

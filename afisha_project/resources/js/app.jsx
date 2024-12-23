@@ -7,6 +7,10 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 import { Provider } from "react-redux";
 import store from './store/store';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Header from './Components/Custom/Header';
+import ShowAfishaInfo from './Pages/ShowAfishaInfo';
+import FetchEachEvent from './Components/Custom/FetchEachEvent';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -23,7 +27,17 @@ createInertiaApp({
         {
             root.render(
                 <Provider store={store}>
-                    <App {...props} />
+                    <BrowserRouter>
+                        <Header />
+                        <Routes>
+                            {/* <Route exact path="/" element={<ShowAfishaInfo city={'spb'} />} /> */}
+                            <Route path="/msk" element={<ShowAfishaInfo city={'msk'} />} />
+                            <Route path="/krd" element={<ShowAfishaInfo city={'krd'} />} />
+                            <Route path="/sochi" element={<ShowAfishaInfo city={'sochi'} />} />
+                            <Route path="/:id" element={<FetchEachEvent />} />
+                        </Routes>
+                        <App {...props} />
+                    </BrowserRouter>
                 </Provider>
             )
         }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FetchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Middleware\HandleCors;
@@ -20,6 +21,8 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
     ]);
 });
+Route::get('/getfetchinfo', [FetchController::class, 'getFetchInfo']);
+Route::get('/{id}', [FetchController::class, 'fetchEachEvent']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

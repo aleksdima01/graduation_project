@@ -6,7 +6,7 @@ export const fetchAfisha = createAsyncThunk(
     async (data, thunkApi) => {
         //const { page, city } = data
         try {
-            const response = await fetch(`https://kudago.com/public-api/v1.4/events/?lang=&fields=id,dates,publication_date,title,short_title,place,location,images,site_url&expand=&order_by=-publication_date&text_format=&ids=&page=${data.page}&page_size=21&location=${data.city}&actual_since=${Date.now() / 1000}`, {
+            const response = await fetch(`http://afisha:8081/getfetchinfo?lang=&fields=id,dates,publication_date,title,short_title,place,location,images,site_url&expand=&order_by=-publication_date&text_format=&ids=&page=${data.page}&page_size=21&location=${data.city}&actual_since=${Date.now() / 1000}`, {
                 method: "GET",
             });
             if (!response.ok) {

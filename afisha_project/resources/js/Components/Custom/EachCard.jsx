@@ -22,7 +22,7 @@ function EachCard({ event }) {
                             ))}</div>
                     }
                     <div className="p-4">
-                        <a href={event.site_url} className="text-blue-600 visited:text-purple-600 hover:bg-slate-300 pointer-events-auto">Перейти на сайт мероприятия</a>
+                        <Link to={event.site_url} className="text-blue-600 visited:text-purple-600 hover:bg-slate-300 pointer-events-auto">Перейти на сайт мероприятия</Link>
                     </div>
                 </div>
             </Link>
