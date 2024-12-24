@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\FetchController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Middleware\HandleCors;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -15,14 +13,20 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
-Route::get('/', function () {
-    return Inertia::render('ShowAfishaInfo', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-});
-Route::get('/getfetchinfo', [FetchController::class, 'getFetchInfo']);
-Route::get('/{id}', [FetchController::class, 'fetchEachEvent']);
+Route::redirect('/', '/spb');
+// Route::get('/', function () {
+//     return Inertia::render('ShowAfishaInfo', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'city' => 'spb',
+//     ]);
+// });
+Route::get('{reactRoutes?}/{id?}', function () {
+    return Inertia::render('Stub');
+})->whereIn('reactRoutes', ['spb', 'msk', 'krd', 'sochi'])->whereNumber('id');
+
+Route::get('api/getfetchinfo', [FetchController::class, 'getFetchInfo']);
+Route::get('api/fetcheachevent', [FetchController::class, 'fetchEachEvent']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

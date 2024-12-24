@@ -5,7 +5,7 @@ export const fetchEvent = createAsyncThunk(
     'event/fetchEvent',
     async (data, thunkApi) => {
         try {
-            const response = await fetch(`http://afisha:8081/fetcheachevent/?id=${data.id}&lang=&fields=&expand=images`, {
+            const response = await fetch(`http://afisha:8081/api/fetcheachevent/?id=${data.id}&lang=&fields=&expand=images`, {
                 method: "GET",
             });
             if (!response.ok) {
