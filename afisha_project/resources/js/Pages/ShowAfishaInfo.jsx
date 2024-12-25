@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchAfisha } from '../Store/afishaReducer';
 import { useEffect } from 'react';
 import Pagination from "../Components/Custom/Pagination";
+import Header from "@/Layouts/Header";
 
 export default function ShowAfishaInfo({ city }) {
     const { afisha, loading, error } = useSelector((state) => state.afisha);
@@ -12,11 +13,13 @@ export default function ShowAfishaInfo({ city }) {
         dispatch(fetchAfisha({ page: 1, city: city }))
     }, [dispatch, city])
 
+
     return (
         <>
+            <Header />
             {/* <Head title="Welcome" /> */}
             <div>
-                <h2 className="text-4xl mb-10">Afisha info</h2>
+                <h2 className="text-4xl mb-10 pt-8">Afisha info</h2>
                 {loading && <p>Загрузка...</p>}
                 {error && <p>Ошибка {error}</p>}
                 {Object.keys(afisha).length !== 0 ? <div className="grid gap-4 grid-cols-3 p-3">

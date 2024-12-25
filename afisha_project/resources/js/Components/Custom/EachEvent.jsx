@@ -1,3 +1,4 @@
+import Header from "@/Layouts/Header";
 import { useSelector } from "react-redux";
 
 function EachEvent() {
@@ -20,6 +21,7 @@ function EachEvent() {
 
     return (
         <>
+            <Header />
             {loading && <p>Загрузка...</p>}
             {error && <p>Ошибка {error}</p>}
             {Object.keys(event).length !== 0 ?

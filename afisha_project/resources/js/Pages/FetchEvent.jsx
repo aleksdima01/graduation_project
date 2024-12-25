@@ -1,11 +1,10 @@
+import EachEvent from "@/Components/Custom/EachEvent";
+import { fetchEvent } from "@/Store/eventReducer";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useEffect } from 'react';
-import EachEvent from "./EachEvent";
-import { fetchEvent } from "../../store/eventReducer";
 import { useParams } from "react-router-dom";
 
-const FetchEachEvent = () => {
-    const { id } = useParams();
+const FetchEvent = ({ id }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchEvent({ id: id }))
@@ -16,4 +15,4 @@ const FetchEachEvent = () => {
         </>
     )
 }
-export default FetchEachEvent
+export default FetchEvent

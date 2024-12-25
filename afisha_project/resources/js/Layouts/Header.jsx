@@ -1,6 +1,8 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { NavLink } from 'react-router-dom';
+import { Link, usePage } from '@inertiajs/react';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 
 const navigation = [
@@ -14,9 +16,13 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
+
 export default function Header() {
+    const page = usePage();
+    console.log(page)
     return (
-        <Disclosure as="nav" className="bg-gray-800 mb-6">
+        <Disclosure as="nav" className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -35,14 +41,12 @@ export default function Header() {
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
                                 {navigation.map((item) => (
-                                    <NavLink to={item.city}
+                                    <Link href={route(item.city)}
                                         key={item.name}
-                                        className={({ isActive }) =>
-                                            isActive ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
-                                        }
+                                        className={(page.url === `/${item.city}`) ? 'bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'}
                                     >
                                         {item.name}
-                                    </NavLink>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -58,6 +62,34 @@ export default function Header() {
                         </button>
 
                         {/* Profile dropdown */}
+                        <nav className="-mx-3 flex flex-1 justify-end">
+                            {page.props.auth.user ? (
+                                <Link
+                                    href={route('dashboard')}
+                                    onClick={() => changeLocation()}
+                                    className="rounded-md px-3 py-2 text-white/50 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                >
+                                    Dashboard
+                                </Link>
+                            ) : (
+                                <>
+                                    <Link
+                                        href={route('login')}
+                                        onClick={() => changeLocation()}
+                                        className="rounded-md pr-2 pl-3 py-2 text-white/50 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Log in
+                                    </Link>
+                                    <Link
+                                        href={route('register')}
+                                        onClick={() => changeLocation()}
+                                        className="rounded-md pr-3 pl-2 py-2 text-white/50 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Register
+                                    </Link>
+                                </>
+                            )}
+                        </nav>
                         <Menu as="div" className="relative ml-3">
                             <div>
                                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
