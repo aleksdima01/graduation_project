@@ -58,6 +58,9 @@ Route::get('{id?}', function ($id) {
 
 Route::get('api/getfetchinfo', [FetchController::class, 'getFetchInfo']);
 Route::get('api/fetcheachevent', [FetchController::class, 'fetchEachEvent']);
+Route::get('api/fetchfavorites', [FetchController::class, 'fetchFavorites']);
+Route::get('api/savefavorites', [FetchController::class, 'saveFavorites']);
+Route::get('api/deletefavorites', [FetchController::class, 'deleteFavorites']);
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
