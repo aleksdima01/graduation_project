@@ -5,29 +5,26 @@ import Dropdown from '@/Components/Dropdown';
 
 import { useState } from 'react';
 const navigation = [
-    { name: 'Санкт-Петербург', city: 'spb', current: true },
-    { name: 'Москва', city: 'msk', current: false },
-    { name: 'Краснодар', city: 'krd', current: false },
-    { name: 'Сочи', city: 'sochi', current: false },
+    { name: 'Санкт-Петербург', city: 'spb', current: true, href: '/spb' },
+    { name: 'Москва', city: 'msk', current: false, href: '/msk' },
+    { name: 'Краснодар', city: 'krd', current: false, href: '/krd' },
+    { name: 'Сочи', city: 'sochi', current: false, href: '/sochi' },
 ]
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-
-
 export default function Header() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const page = usePage();
-    console.log(page)
     return (
         <Disclosure as="nav" className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex h-16 items-center justify-between">
                     <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                        {/* Mobile menu button*/}
+                        {/* Mobile right menu button*/}
                         <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Меню</span>
@@ -55,7 +52,6 @@ export default function Header() {
                         </div>
                     </div>
                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
 
                         {/* Profile dropdown */}
                         <nav className="-mx-3 flex flex-1 justify-end">
@@ -96,7 +92,6 @@ export default function Header() {
                                                     type="button"
                                                     className="inline-flex items-center rounded-md border border-transparent  px-3 py-2 text-sm font-medium leading-4 text-gray-300 transition duration-150 ease-in-out hover:bg-gray-700 focus:outline-none hover:text-white"
                                                 >
-
                                                     {page.props.auth.user.name}
 
                                                     <svg
@@ -138,11 +133,6 @@ export default function Header() {
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <button
-                                        // onClick={() =>
-                                        //     setShowingNavigationDropdown(
-                                        //         (previousState) => !previousState,
-                                        //     )
-                                        // }
                                         className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none ml-2"
                                     >
                                         <svg
@@ -192,15 +182,13 @@ export default function Header() {
                                         Выйти
                                     </Dropdown.Link>
                                 </Dropdown.Content>
-
                             </Dropdown>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Mobile left menu button*/}
 
             <DisclosurePanel className="sm:hidden">
                 <div className="space-y-1 px-2 pb-3 pt-2">
@@ -210,10 +198,8 @@ export default function Header() {
                             as="a"
                             href={item.href}
                             aria-current={item.current ? 'page' : undefined}
-                            className={classNames(
-                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'block rounded-md px-3 py-2 text-base font-medium',
-                            )}
+                            className={(page.url === `/${item.city}`) ? 'bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium' : 'text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
+                            }
                         >
                             {item.name}
                         </DisclosureButton>

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 function EachCard({ event }) {
     const upperTitle = event.title.charAt(0).toUpperCase() + event.title.slice(1);
     const ev = event.dates.filter(el => ((Date.now() > el.start * 1000 && Date.now() < el.end * 1000) || (Date.now() < el.start * 1000)));
-    //console.log(Date.now())
     return (
         <>
             <Link to={`/${event.id}`}>

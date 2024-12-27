@@ -20,7 +20,6 @@ return [
     'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
-    //'allowed_origins' => ['http://afisha:8081', 'afisha:8081', '*.afisha:8081'],
 
     'allowed_origins_patterns' => [],
 

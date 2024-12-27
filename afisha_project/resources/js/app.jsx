@@ -8,7 +8,6 @@ import store from './store/store';
 import { BrowserRouter } from 'react-router-dom';
 
 
-
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
@@ -20,9 +19,6 @@ createInertiaApp({
         ),
     setup({ el, App, props }) {
         const root = createRoot(el);
-        console.log(props)
-
-
         {
             root.render(
                 <Provider store={store}>
@@ -33,7 +29,6 @@ createInertiaApp({
 
             )
         }
-
     },
     progress: {
         color: '#4B5563',

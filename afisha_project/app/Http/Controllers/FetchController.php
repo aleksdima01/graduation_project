@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\DB;
 
 class FetchController extends Controller
 {
-
     public function getFetchInfo(Request $request)
     {
         $response = Http::get("https://kudago.com/public-api/v1.4/events/?lang=&fields=id,dates,publication_date,title,short_title,place,location,images,site_url&expand=&order_by=-publication_date&text_format=&ids=&page={$request->page}&page_size=21&location={$request->location}&actual_since={$request->actual_since}");
@@ -22,7 +20,8 @@ class FetchController extends Controller
     }
     public function fetchFavorites(Request $request)
     {
-        $favorites = User::findOrFail($request->user)->value('favorites');
+        $user = User::findOrFail($request->user);
+        $favorites = $user->favorites;
         $stringFavorites = implode(",", $favorites);
         $response = Http::get("https://kudago.com/public-api/v1.4/events/?lang=&fields=id,dates,publication_date,title,short_title,place,location,images,site_url&ids={$stringFavorites}");
         return $response->json();
@@ -45,8 +44,8 @@ class FetchController extends Controller
         $newFavorites = collect($favorites)->filter(function ($value) use ($request) {
             return $value !== $request->favoriteid;
         });
-        $favorites = $newFavorites;
-        // $user->save();
-        return $favorites;
+        $user->favorites = $newFavorites;
+        $user->save();
+        return $user->favorites;
     }
 }
