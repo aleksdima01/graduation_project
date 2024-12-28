@@ -35,14 +35,18 @@ export default function Pagination({ city }) {
     }
     return (
         <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
-            <div className="flex flex-1 justify-between sm:hidden">
+            <div className="flex flex-1 justify-around sm:hidden">
                 <button
-                    className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    onClick={() => handleChangePage(page - 1)}
+                    className={page !== 1 ? "relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" :
+                        "hidden"}
                 >
                     Previous
                 </button>
                 <button
-                    className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    onClick={() => handleChangePage(page + 1)}
+                    className={page !== count_pages ? "relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50" :
+                        "hidden"}
                 >
                     Next
                 </button>

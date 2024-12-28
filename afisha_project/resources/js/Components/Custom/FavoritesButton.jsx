@@ -41,10 +41,10 @@ function FavoritesButton({ id, addClasses }) {
     return (
         <>
             {userProps &&
-                <button className={`transition duration-150 ${addClasses}`}
+                <button className={`transition duration-150 ${addClasses} `}
                 >
                     {favorites === null ? <span onClick={() => inFavoritesFalse ? addToFavorites(true) : deleteFromFavorites(true)}
-                        className={`${inFavoritesFalse ? 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100' : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100'}`}>
+                        className={`${inFavoritesFalse ? 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px]  font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100' : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px]  font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100'}`}>
                         {inFavoritesFalse ? <>В избранное</> : <>Убрать из избранного</>}
 
                     </span> :
@@ -52,13 +52,13 @@ function FavoritesButton({ id, addClasses }) {
                         <>
                             {(!(favorites.includes(String(id)))) ?
                                 <span onClick={() => inFavoritesFalse ? addToFavorites(true) : deleteFromFavorites(true)}
-                                    className={`${inFavoritesFalse ? 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100' : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100'}`}>
+                                    className={`${inFavoritesFalse ? 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px]  font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100' : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px]  font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100'}`}>
                                     {inFavoritesFalse ? <>В избранное</> : <>Убрать из избранного</>}
 
                                 </span> : <span
 
                                     onClick={() => inFavoritesTrue ? deleteFromFavorites(false) : addToFavorites(false)}
-                                    className={`${inFavoritesTrue ? "favorite inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100" : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs/[8px] sm:text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100'}`}>
+                                    className={`${inFavoritesTrue ? "favorite inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px]  font-medium text-orange-700 ring-1 ring-inset ring-red-800/50 hover:text-red-900 hover:bg-red-100" : 'inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-[6px] sm:text-xs/[10px] font-medium text-green-700 ring-1 ring-inset ring-green-600/40 hover:text-green-900 hover:bg-green-100'}`}>
                                     {inFavoritesTrue ? <>Убрать из избранного</> : <>В избранное</>}
                                 </span>}</>}
                 </button >

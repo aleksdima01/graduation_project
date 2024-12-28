@@ -15,6 +15,9 @@ export default function ShowAfishaInfo({ city }) {
         dispatch(fetchAfisha({ page: 1, city: city }))
     }, [dispatch, city])
 
+
+
+
     return (
         <>
             <Header />
@@ -37,15 +40,16 @@ export default function ShowAfishaInfo({ city }) {
                                 <Link href={el.id}
                                     className=" h-full w-full flex justify-center"
                                 >
+
                                     <EachCard event={el} />
                                 </Link>
-                                <div className="px-4">
+                                <div >
                                     <FavoritesButton id={el.id}
-                                        addClasses={'absolute bottom-8 '}
+                                        addClasses={'absolute bottom-8 px-4 '}
                                     />
                                 </div>
 
-                                <a href={el.site_url} className="px-4 absolute bottom-1 text-blue-600 visited:text-purple-600 pointer-events-auto hover:text-orange-600 text-xs sm:text-sm lg:text-base">Перейти на сайт мероприятия</a>
+                                <a href={el.site_url} className="px-4 absolute bottom-1 text-blue-600 visited:text-purple-600 pointer-events-auto hover:text-orange-600 text-[7px] sm:text-sm/[10px]  lg:text-base">Перейти на сайт мероприятия</a>
                             </div>
                         ))
                     }
