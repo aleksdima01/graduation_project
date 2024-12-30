@@ -5,7 +5,7 @@ export const fetchAddToFavorites = createAsyncThunk(
     'favorites/fetchAddToFavorites',
     async (data, thunkApi) => {
         try {
-            const response = await fetch(`http://192.168.101.126:8081/api/savefavorites/?user=${data.user}&favoriteid=${data.id}`, {
+            const response = await fetch(`http://192.168.1.63:8081/api/savefavorites/?user=${data.user}&favoriteid=${data.id}`, {
                 method: "GET",
             });
             if (!response.ok) {
