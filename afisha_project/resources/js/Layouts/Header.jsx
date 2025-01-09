@@ -11,10 +11,6 @@ const navigation = [
     { name: 'Сочи', city: 'sochi', current: false, href: '/sochi' },
 ]
 
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
-}
-
 export default function Header() {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);

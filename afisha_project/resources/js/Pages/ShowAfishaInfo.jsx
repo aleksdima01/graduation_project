@@ -15,9 +15,6 @@ export default function ShowAfishaInfo({ city }) {
         dispatch(fetchAfisha({ page: 1, city: city }))
     }, [dispatch, city])
 
-
-
-
     return (
         <>
             <Header />
@@ -40,7 +37,6 @@ export default function ShowAfishaInfo({ city }) {
                                 <Link href={el.id}
                                     className=" h-full w-full flex justify-center"
                                 >
-
                                     <EachCard event={el} />
                                 </Link>
                                 <div >
@@ -58,9 +54,7 @@ export default function ShowAfishaInfo({ city }) {
             </div >
             <footer className={loading ? "hidden" : ''}>
                 <Pagination city={city} />
-
             </footer>
-
         </>
     );
 }

@@ -5,7 +5,7 @@ export const fetchEvent = createAsyncThunk(
     'event/fetchEvent',
     async (data, thunkApi) => {
         try {
-            const response = await fetch(`http://192.168.1.63:8081/api/fetcheachevent/?id=${data.id}&lang=&fields=&expand=images`, {
+            const response = await fetch(`http://127.0.0.1:8081/api/fetcheachevent/?id=${data.id}&lang=&fields=&expand=images`, {
                 method: "GET",
             });
             if (!response.ok) {

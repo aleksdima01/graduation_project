@@ -54,7 +54,6 @@ export default function Dashboard() {
                                                         <FavoritesButton id={el.id} addClasses={'absolute bottom-8   px-4'} />
                                                         <a href={el.site_url} className="px-4 absolute bottom-1 text-blue-600 visited:text-purple-600 pointer-events-auto hover:text-orange-600 text-[7px] sm:text-sm/[10px]  lg:text-base">Перейти на сайт мероприятия</a>
                                                     </div>
-
                                                 ))
                                             }
                                         </div>
