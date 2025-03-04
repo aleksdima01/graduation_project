@@ -14,3 +14,5 @@
  10. Запускаем миграцию для БД `docker-compose exec application php artisan migrate`
  11. Запуск сборки Frontend `docker-compose exec application npm run build`
  12. В браузере перейти по адресу http://127.0.0.1:8081
+ 
+ ![Главная страница](/afisha_project/public/image.png)
